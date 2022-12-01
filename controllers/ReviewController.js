@@ -9,6 +9,19 @@ const GetReviews = async (req, res) => {
     }
 }
 
+const UpdateReview = async (req, res) => {
+    try {
+      let reviewId = parseInt(req.params.id)
+      let updatedReview = await Review.update(req.body, {
+        where: { id: reviewId },
+        returning: true
+      })
+      res.send(updatedReview)
+    } catch (error) {
+      throw error
+    }
+  }
+
 const DeleteReview = async (req, res) => {
     try {
       let reviewId = parseInt(req.params.id)
@@ -21,5 +34,6 @@ const DeleteReview = async (req, res) => {
 
 module.exports = {
     GetReviews,
+    UpdateReview,
     DeleteReview
 }
