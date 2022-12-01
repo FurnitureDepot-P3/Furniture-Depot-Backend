@@ -20,7 +20,8 @@ const GetUserAndReviews = async (req, res) => {
     }
 }
 
+
 module.exports = {
     GetUsers,
-    GetUserAndReviews
+    GetUserAndReviews,
 }
