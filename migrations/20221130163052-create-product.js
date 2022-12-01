@@ -14,7 +14,13 @@ module.exports = {
       },
       category_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        field: 'category_id',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'categories',
+          key: 'id'
+        }
       },
       price: {
         type: Sequelize.FLOAT
