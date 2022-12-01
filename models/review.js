@@ -12,13 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Review.belongsTo(models.Product, {
         foreignKey: 'product_id',
-        as: 'product',
+        as: 'reviews',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
         })
       Review.belongsTo(models.User, {
         foreignKey: 'user_id',
-        as: 'user',
+        as: 'reviews',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
         })
@@ -27,11 +27,23 @@ module.exports = (sequelize, DataTypes) => {
   Review.init({
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field: 'user_id',
+      onDelete: 'CASCADE',
+      references: {
+        model: 'users',
+        key: 'id'
+      }
     },
     product_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field: 'product_id',
+      onDelete: 'CASCADE',
+      references: {
+        model: 'products',
+        key: 'id'
+      }
     },
     rating: DataTypes.INTEGER,
     comment: DataTypes.STRING

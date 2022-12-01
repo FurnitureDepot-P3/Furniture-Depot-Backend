@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Product.belongsTo(models.Category, {
         foreignKey: 'category_id',
-        as: 'category',
+        as: 'products',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
         })
@@ -28,7 +28,13 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     category_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      field: 'category_id',
+      onDelete: 'CASCADE',
+      references: {
+        model: 'categories',
+        key: 'id'
+      }
     },
     price: DataTypes.FLOAT,
     description: DataTypes.STRING,

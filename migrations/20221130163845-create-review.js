@@ -11,11 +11,23 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        field: 'user_id',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
       product_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        field: 'product_id',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'products',
+          key: 'id'
+        }
       },
       rating: {
         type: Sequelize.INTEGER
