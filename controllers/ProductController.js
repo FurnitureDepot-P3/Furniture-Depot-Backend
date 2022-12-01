@@ -20,7 +20,19 @@ const GetProductAndReviews = async (req, res) => {
     }
   }
 
+  const CreateReview = async (req, res) => {
+    try {
+        let productId = parseInt(req.params.product_id)
+        let reviewBody = {productId, ...req.body}
+        let review = await Review.create(reviewBody)
+        res.send(review)
+    } catch (error) {
+        throw error
+    }
+}
+
   module.exports = {
     GetProducts,
     GetProductAndReviews,
+    CreateReview
 }
