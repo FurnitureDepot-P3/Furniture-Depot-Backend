@@ -20,8 +20,18 @@ const GetUserAndReviews = async (req, res) => {
     }
 }
 
+// const DeleteMyReview = async (req, res) => {
+//   try {
+//     let reviewId = parseInt(req.params.id)
+//     await Review.destroy({where: { id: reviewId}})
+//     res.send({ message: `Deleted review with an id of ${reviewId}`})
+//   } catch (error) {
+//     throw error
+//   }
+// }
 
 module.exports = {
     GetUsers,
     GetUserAndReviews,
+    // DeleteMyReview
 }
