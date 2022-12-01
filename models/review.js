@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         })
       Review.belongsTo(models.User, {
         foreignKey: 'user_id',
-        as: 'reviews',
+        as: 'myReviews',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
         })

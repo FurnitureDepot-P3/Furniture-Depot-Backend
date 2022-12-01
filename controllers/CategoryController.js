@@ -9,6 +9,18 @@ const GetCategories = async (req, res) => {
     }
 }
 
+const GetCategoryAndProducts = async (req, res) => {
+    try {
+      const categoryAndProducts = await Category.findByPk(req.params.id, {
+        include: [{ model: Product, as: 'products' }]
+      })
+      res.send(categoryAndProducts)
+    } catch (error) {
+      throw error
+    }
+  }
+
 module.exports = {
     GetCategories,
+    GetCategoryAndProducts
 }
