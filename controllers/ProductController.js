@@ -9,18 +9,18 @@ const GetProducts = async (req, res) => {
     }
 }
 
-const GetProductAndReviews = async (req, res) => {
-    try {
-      const productAndReviews = await Product.findByPk(req.params.product_id, {
-        include: [{ model: Review, as: 'reviews' }]
-      })
-      res.send(productAndReviews)
-    } catch (error) {
-      throw error
-    }
-  }
+// const GetProductAndReviews = async (req, res) => {
+//     try {
+//       const productAndReviews = await Product.findByPk(req.params.product_id, {
+//         include: [{ model: Review, as: 'reviews' }]
+//       })
+//       res.send(productAndReviews)
+//     } catch (error) {
+//       throw error
+//     }
+//   }
 
   module.exports = {
     GetProducts,
-    GetProductAndReviews,
+    // GetProductAndReviews,
 }
