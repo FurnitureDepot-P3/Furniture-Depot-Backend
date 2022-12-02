@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       image: {
-        type: Sequelize.BLOB
+        type: Sequelize.TEXT
       },
       in_stock: {
         type: Sequelize.BOOLEAN
