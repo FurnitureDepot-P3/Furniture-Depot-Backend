@@ -10,17 +10,20 @@ Furniture Depot is a new home furniture retailer and wants to create an ecommerc
 #### FRONT END
 Lerenzo Martinez
   * https://github.com/hamchops
-  * http://www.linkedin.com/in/lerenzo-martinez-a694519b<br>
+  * http://www.linkedin.com/in/lerenzo-martinez-a694519b
 <br>
+
 Walter Thomas
   * https://github.com/waltho76
   * https://www.linkedin.com/in/walter-thomas-4854a424a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B7tzH1ERARZC%2Bq7YxDhMRFQ%3D%3D
 
+
 #### BACK END
 Matt Kiska
   * https://github.com/mattkiska
-  * https://www.linkedin.com/in/matt-kiska-7b5725219/<br>
+  * https://www.linkedin.com/in/matt-kiska-7b5725219/
 <br>
+
 Jason Carmichael
   * https://github.com/jasondcarmichael
   * http://www.linkedin.com/in/jasondcarmichael
