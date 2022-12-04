@@ -3,20 +3,20 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Cart extends Model {
+  class CartItem extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Cart.belongsTo(models.User, {
-        foreignKey: 'user_id',
-        as: 'cart',
+      CartItem.belongsTo(models.Product, {
+        foreignKey: 'product_id',
+        as: 'cart_item',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
-      })
-      Cart.hasMany(models.CartItem, {
+        })
+      CartItem.belongsTo(models.Cart, {
         foreignKey: 'cart_id',
         as: 'my_cart',
         onDelete: 'CASCADE',
@@ -24,21 +24,32 @@ module.exports = (sequelize, DataTypes) => {
         })
     }
   }
-  Cart.init({
-    user_id: {
+  CartItem.init({
+    cart_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: 'user_id',
+      field: 'cart_id',
       onDelete: 'CASCADE',
       references: {
-        model: 'users',
+        model: 'carts',
         key: 'id'
       }
-    }
+    },
+    product_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'product_id',
+      onDelete: 'CASCADE',
+      references: {
+        model: 'products',
+        key: 'id'
+      }
+    },
+    quantity: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Cart',
-    tableName: 'carts'
+    modelName: 'CartItem',
+    tableName: 'cartitems'
   });
-  return Cart;
+  return CartItem;
 };
