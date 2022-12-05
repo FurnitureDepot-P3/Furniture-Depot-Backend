@@ -1,4 +1,4 @@
-const { Cart, User } = require('../models')
+const { Cart, CartItem, User } = require('../models')
 
 const GetCarts = async (req, res) => {
     try {
@@ -20,7 +20,19 @@ const GetCartAndUsers = async (req, res) => {
     }
   }
 
+  const GetCartAndCartItems = async (req, res) => {
+    try {
+      const cartAndItems = await Cart.findByPk(req.params.id, {
+        include: [{ model: CartItem, as: 'my_cart' }]
+      })
+      res.send(cartAndItems)
+    } catch (error) {
+      throw error
+    }
+  }
+
 module.exports = {
     GetCarts,
-    GetCartAndUsers
+    GetCartAndUsers,
+    GetCartAndCartItems
 }
