@@ -5,7 +5,6 @@ require('dotenv').config()
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECRET = process.env.APP_SECRET
 
-
 const hashPassword = async (password) => {
     let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
     return hashedPassword
@@ -28,9 +27,9 @@ const verifyToken = (req, res, next) => {
         if (payload) {
             return next()
         }
-        res.status(401).send({ status: 'Error', msg: 'Unauthorized, payload' })
+        res.status(401).send({ status: 'Error', message: 'Unauthorized, payload' })
     } catch (error) {
-        res.status(401).send({ status: 'Error', msg: 'Unauthorized, token' })
+        res.status(401).send({ status: 'Error', message: 'Unauthorized, token' })
     }
 }
 
@@ -42,15 +41,14 @@ const stripToken = (req, res, next) => {
             return next()
         }
     } catch (error) {
-        res.status(401).send({ status: 'Error', msg: 'Unauthorized, strip token'})
-
+        res.status(401).send({ status: 'Error', message: 'Unauthorized, strip token' })
     }
 }
 
 module.exports = {
-    stripToken,
-    verifyToken,
-    createToken,
+    hashPassword,
     comparePassword,
-    hashPassword
+    createToken,
+    verifyToken,
+    stripToken
 }
