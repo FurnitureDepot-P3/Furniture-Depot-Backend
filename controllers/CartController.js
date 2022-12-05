@@ -9,17 +9,6 @@ const GetCarts = async (req, res) => {
     }
 }
 
-const GetCartAndUsers = async (req, res) => {
-    try {
-      const cartAndUsers = await Cart.findByPk(req.params.id, {
-        include: [{ model: User, as: 'cart' }]
-      })
-      res.send(cartAndUsers)
-    } catch (error) {
-      throw error
-    }
-  }
-
   const GetCartAndCartItems = async (req, res) => {
     try {
       const cartAndItems = await Cart.findByPk(req.params.id, {
@@ -31,10 +20,8 @@ const GetCartAndUsers = async (req, res) => {
     }
   }
 
-  
 
 module.exports = {
     GetCarts,
-    GetCartAndUsers,
     GetCartAndCartItems
 }
