@@ -1,4 +1,4 @@
-const { User, Review } = require('../models')
+const { User, Review, Cart } = require('../models')
 
 const GetUsers = async (req, res) => {
     try {
@@ -20,6 +20,17 @@ const GetUserAndReviews = async (req, res) => {
     }
 }
 
+const GetUserAndCart = async (req, res) => {
+  try {
+    const userAndCart = await User.findByPk(req.params.id, {
+      include: [{ model: Cart, as: 'cart' }]
+    })
+    res.send(userAndCart)
+  } catch (error) {
+    throw error
+  }
+}
+
 // const DeleteMyReview = async (req, res) => {
 //   try {
 //     let reviewId = parseInt(req.params.id)
@@ -33,5 +44,6 @@ const GetUserAndReviews = async (req, res) => {
 module.exports = {
     GetUsers,
     GetUserAndReviews,
+    GetUserAndCart
     // DeleteMyReview
 }
