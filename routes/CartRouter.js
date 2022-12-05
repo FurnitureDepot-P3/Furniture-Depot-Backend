@@ -3,6 +3,7 @@ const controller = require('../controllers/CartController')
 
 Router.get('/', controller.GetCarts)
 Router.get('/:id', controller.GetCartAndUsers)
-Router.get('/:id/items',controller.GetCartAndCartItems)
+Router.get('/:id/items', controller.GetCartAndCartItems)
+
 
 module.exports = Router

@@ -7,9 +7,10 @@ module.exports = {
       'users', 
       'passwordDigest', 
       {
-      type: Sequelize.STRING,
-      allowNull: false
-    })
+        type: Sequelize.STRING,
+        allowNull: false
+      }
+    )
   },
 
   async down (queryInterface, Sequelize) {
