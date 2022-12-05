@@ -2,15 +2,15 @@ const Router = require('express').Router()
 const controller = require('../controllers/AuthController')
 const middleware = require('../middleware')
 
-router.post('/login', controller.Login)
-router.post('/register', controller.Register)
-router.post(
+Router.post('/login', controller.Login)
+Router.post('/register', controller.Register)
+Router.post(
   '/update',
   middleware.stripToken,
   middleware.verifyToken,
   controller.UpdatePassword
 )
-router.get(
+Router.get(
   '/session',
   middleware.stripToken,
   middleware.verifyToken,
