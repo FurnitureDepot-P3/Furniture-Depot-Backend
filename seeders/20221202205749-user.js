@@ -11,6 +11,7 @@ module.exports = {
         username: 'Darth Vader',
         email: 'dv1@deathstar.com',
         password: 'Iamtheboss',
+        passwordDigest: 'Iamtheboss',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -18,6 +19,7 @@ module.exports = {
         username: 'Ted Lasso',
         email: 'coach@.afcrichmond.com',
         password: 'callmecoach',
+        passwordDigest: 'callmecoach',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,6 +27,7 @@ module.exports = {
         username: 'James Bond',
         email: 'jb007@.misix.com',
         password: 'topsecret',
+        passwordDigest: 'topsecret',
         createdAt: new Date(),
         updatedAt: new Date()
       }
