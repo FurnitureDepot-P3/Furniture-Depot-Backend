@@ -9,6 +9,17 @@ const GetCategories = async (req, res) => {
     }
 }
 
+const GetAllCategoriesAndAllProducts = async (req, res) => {
+  try {
+    const allCategoriesAndProducts = await Category.findAll({ 
+      include: { model: Product, as: 'products' }
+    })
+    res.send(allCategoriesAndProducts)
+  } catch (error) {
+    throw error
+  }
+}
+
 const GetCategoryAndProducts = async (req, res) => {
     try {
       const categoryAndProducts = await Category.findByPk(req.params.id, {
@@ -22,5 +33,6 @@ const GetCategoryAndProducts = async (req, res) => {
 
 module.exports = {
     GetCategories,
+    GetAllCategoriesAndAllProducts,
     GetCategoryAndProducts
 }
