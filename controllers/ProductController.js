@@ -9,6 +9,17 @@ const GetProducts = async (req, res) => {
     }
 }
 
+const GetAllProductsAndAllReviews = async (req, res) => {
+  try {
+    const allProdAndReviews = await Product.findAll({ 
+      include: { model: Review, as: 'reviews' }
+    })
+    res.send(allProdAndReviews)
+  } catch (error) {
+    throw error
+  }
+}
+
 const GetProductAndReviews = async (req, res) => {
     try {
       const productAndReviews = await Product.findByPk(req.params.id, {
@@ -33,6 +44,7 @@ const GetProductAndReviews = async (req, res) => {
 
   module.exports = {
     GetProducts,
+    GetAllProductsAndAllReviews,
     GetProductAndReviews,
     CreateReview
 }

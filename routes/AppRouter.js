@@ -9,6 +9,7 @@ const CartItemRouter = require('./CartItemRouter')
 
 Router.use('/categories', CategoryRouter)
 Router.use('/products', ProductRouter)
+// Router.use('/categories/products', ProductRouter)
 Router.use('/reviews', ReviewRouter)
 Router.use('/users', UserRouter)
 Router.use('/auth', AuthRouter)

@@ -20,8 +20,19 @@ const GetCarts = async (req, res) => {
     }
   }
 
+  const GetAllCartsAndItems = async (req, res) => {
+    try {
+      const cartsAndItems = await Cart.findAll( {
+        include: [{ model: CartItem, as: 'my_cart' }]
+      })
+      res.send(cartsAndItems)
+    } catch (error) {
+      throw error
+    }
+  }
 
 module.exports = {
     GetCarts,
-    GetCartAndCartItems
+    GetCartAndCartItems,
+    GetAllCartsAndItems
 }
