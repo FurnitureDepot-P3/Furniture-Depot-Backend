@@ -102,6 +102,33 @@ Then to get the review to show on the page we pass it as such
 <p className="review-text">{products.reviews[0].comment} </p>
 ```
 ### Update
+Back end function created in controller to update a review
+```
+const UpdateReview = async (req, res) => {
+    try {
+      let reviewId = parseInt(req.params.reviews_id)
+      let updatedReview = await Review.update(req.body, {
+        where: { id: reviewId },
+        returning: true
+      })
+      res.send(updatedReview)
+    } catch (error) {
+      throw error
+    }
+  }
+```
+Front end 
+```
+const updateReview = async () => {
+        const response = await axios.put(`http://localhost:3001/api/reviews/${myReviews.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        console.log("updated successfully")
+    }
+```
 
 ### Delete
 This is the back end function created in the controller to delete a review
