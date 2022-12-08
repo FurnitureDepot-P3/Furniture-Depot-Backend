@@ -3,11 +3,77 @@ A Full-Stack E-Commerce App Built with the PERN Stack
 
 <img src="assets/furniture_hero.png" alt="homepage">
 
-## Overview
+## Table of Contents
+
+1. [Overview](#overview)
+2. [Front-End](#frontend)
+3. [Back-End](#backend)
+4. [Full-CRUD](#fullcrud)
+5. [Development Team](#developmentteam)
+
+## Overview <a name="overview"></a>
 Furniture Depot is a new home furniture retailer and wants to create an ecommerce site. They want users to be able to visit the site to view furnishings organized by different rooms in the house. Users will be able to read product reviews associated with particular products, as well as contribute reviews of their own. Users will be able to register for an account and “purchase” items through a cart.
 
-## Development Team
-#### FRONT END
+## Front-End <a name="frontend"></a>
+The Front end of the application was built with react. In the components folder there are separate components for each of the 4 categories. Living Room, Dining Room, Bedroom, and Outdoor. Originally there were just products visible via a function we had created in our controllers on the back end to show all of the products in any given category. Once reviews were added this became more complicated and was one of the places that we had the most trouble with, getting not only the products we wanted but the reviews associated with them via the category_id. To do this we created this bit of code 
+
+```
+const [product, setProduct] = useState([])
+    useEffect(() => {
+        const getData = async () => {
+            const productResponse = await axios.get(`http://localhost:3001/api/products/reviews`)
+                setProduct(productResponse.data)
+                console.log(productResponse.data)
+    
+        }
+        getData()
+    }, [])
+    
+    const newArray = product.filter(category => category.category_id === 4)
+```
+This code allowed us to filter the search by the category_id chosen and then set it to the value of newArray which was utilized to grab all of the products with their reviews per category from the database.
+
+## Back-End <a name="backend"></a>
+For the back end we utilized Sequelize, Postgres, Express, and Cors. The database was created via sequelize using postgres as the dialect. 
+One of the big challenges we wanted to address was utilizing Auth for user registration and login. To get auth working a middleware file was created to handle password creation, auth token creation, as well as password validation and token validation. All of this allows you to create a user on the register page in the front end and then sign in with that user email and password you created, all while encrypting your password in the database to keep it safe. 
+
+## Full-CRUD <a name="fullcrud"></a>
+The goal of this project was to create a working application that also had full CRUD functionality. Examples are :
+
+# Create
+
+# Read
+
+# Update
+
+# Delete
+This is the back end function created in the controller to delete a review
+```
+const DeleteReview = async (req, res) => {
+    try {
+      let reviewId = parseInt(req.params.reviews_id)
+      await Review.destroy({where: { id: reviewId}})
+      res.send({ message: `Deleted review with an id of ${reviewId}`})
+    } catch (error) {
+      throw error
+    }
+  }
+```
+This is the axios call to the back end to find the review that we want to delete
+```
+const deleteReview = async () => {
+        const response = await axios.delete(`http://localhost:3001/api/reviews/${myReviews.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+        console.log("deleted successfully")
+       
+    }
+```
+## Development Team <a name="developmentteam"></a>
+
 Lerenzo Martinez
   * https://github.com/hamchops
   * http://www.linkedin.com/in/lerenzo-martinez-a694519b
@@ -17,11 +83,9 @@ Walter Thomas
   * https://github.com/waltho76
   * https://www.linkedin.com/in/walter-thomas-4854a424a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B7tzH1ERARZC%2Bq7YxDhMRFQ%3D%3D
 
-
-#### BACK END
 Matt Kiska
   * https://github.com/mattkiska
-  * https://www.linkedin.com/in/matt-kiska-7b5725219/
+  * https://www.linkedin.com/in/matt-kiska
 <br>
 
 Jason Carmichael
