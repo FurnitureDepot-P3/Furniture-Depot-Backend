@@ -52,9 +52,55 @@ One of the big challenges we wanted to address was utilizing Auth for user regis
 The goal of this project was to create a working application that also had full CRUD functionality. Examples are :
 
 ### Create
-
+To Create a review this function is used on the back end
+```
+const CreateReview = async (req, res) => {
+    try {
+        let productId = parseInt(req.params.product_id)
+        let reviewBody = {productId, ...req.body}
+        let review = await Review.create(reviewBody)
+        res.send(review)
+    } catch (error) {
+        throw error
+    }
+```
+This is the axios call to the back end that creates the review
+```
+ axios
+      .post("http://localhost:3001/api/products/1/myreview", createReview)
+      .then((response) => {
+        console.log(response.status)
+        console.log(response.data.token)
+      })
+```
 ### Read
-
+To get our reviews this function is used on the back end
+```
+const GetReviews = async (req, res) => {
+    try {
+        const review = await Review.findByPk(req.params.review_id)
+        res.send(review)
+    } catch (error) {
+        throw error
+    }
+}
+```
+On the Front end we use an axios call that both grabs our products and our reviews together.
+```
+const [product, setProduct] = useState([])
+    useEffect(() => {
+        const getData = async () => {
+            const productResponse = await axios.get(`http://localhost:3001/api/products/reviews`)
+                setProduct(productResponse.data)
+        }
+        getData()
+    }, [])
+```
+Then to get the review to show on the page we pass it as such
+```
+<p className="review-text"> People who purchased this product rate it a {products.reviews[0].rating} out of 5!</p>
+<p className="review-text">{products.reviews[0].comment} </p>
+```
 ### Update
 
 ### Delete
