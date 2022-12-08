@@ -6,13 +6,24 @@ A Full-Stack E-Commerce App Built with the PERN Stack
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Front-End](#frontend)
-3. [Back-End](#backend)
-4. [Full-CRUD](#fullcrud)
-5. [Development Team](#developmentteam)
+2. [Preparation](#preparation)
+3. [Front-End](#frontend)
+4. [Back-End](#backend)
+5. [Full-CRUD](#fullcrud)
+6. [Development Team](#developmentteam)
 
 ## Overview <a name="overview"></a>
 Furniture Depot is a new home furniture retailer and wants to create an ecommerce site. They want users to be able to visit the site to view furnishings organized by different rooms in the house. Users will be able to read product reviews associated with particular products, as well as contribute reviews of their own. Users will be able to register for an account and “purchase” items through a cart.
+
+## Preparation <a name="preparation"></a>
+#### When deciding on what we wanted to do for this project we worked together to create some basic information to follow as we moved forward.
+
+Component Hierarchy Diagram
+<img src="assets/furniture_depot_CHD.png" alt="homepage">
+Entity Relationship Diagram
+<img src="assets/furniture_ecomm_ERD.png" alt="homepage">
+Initial Wireframe
+<img src="assets/landing_wireframe.png" alt="homepage">
 
 ## Front-End <a name="frontend"></a>
 The Front end of the application was built with react. In the components folder there are separate components for each of the 4 categories. Living Room, Dining Room, Bedroom, and Outdoor. Originally there were just products visible via a function we had created in our controllers on the back end to show all of the products in any given category. Once reviews were added this became more complicated and was one of the places that we had the most trouble with, getting not only the products we wanted but the reviews associated with them via the category_id. To do this we created this bit of code 
@@ -40,13 +51,13 @@ One of the big challenges we wanted to address was utilizing Auth for user regis
 ## Full-CRUD <a name="fullcrud"></a>
 The goal of this project was to create a working application that also had full CRUD functionality. Examples are :
 
-# Create
+### Create
 
-# Read
+### Read
 
-# Update
+### Update
 
-# Delete
+### Delete
 This is the back end function created in the controller to delete a review
 ```
 const DeleteReview = async (req, res) => {
@@ -77,7 +88,6 @@ const deleteReview = async () => {
 Lerenzo Martinez
   * https://github.com/hamchops
   * http://www.linkedin.com/in/lerenzo-martinez-a694519b
-<br>
 
 Walter Thomas
   * https://github.com/waltho76
@@ -86,7 +96,6 @@ Walter Thomas
 Matt Kiska
   * https://github.com/mattkiska
   * https://www.linkedin.com/in/matt-kiska
-<br>
 
 Jason Carmichael
   * https://github.com/jasondcarmichael
