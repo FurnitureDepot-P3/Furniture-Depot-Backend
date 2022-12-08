@@ -14,6 +14,18 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => res.json({ message: 'Server Works' }))
+
+app.get('/dummy', (req, res) => res.json([
+    {
+        name: "tylus"
+    },
+    {
+        name: "tiffany"
+    },
+    {
+        name: "jeremy"
+    }
+]))
 app.use('/api', AppRouter)
 
 app.listen(PORT, () => console.log(`Server Running On Port: ${PORT}`))
